@@ -5,6 +5,7 @@ import json
 from datetime import datetime, timedelta
 
 from config import Config, load_config
+import logging
 
 
 import asyncio
@@ -31,8 +32,9 @@ media_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 print(media_dir)
 
 # Абсолютный путь к папке с базой данных
-database_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
-database_file = database_dir + "\database.json"
+#database_dir = os.path.join(os.path.dirname(os.path.abspath("database.json")))
+#database_file = database_dir + "database.json"
+database_file = "database.json"
 print(database_file)
 
 # Загрузка базы данных, в которой будут хранятся данные пользователей
@@ -60,7 +62,8 @@ async def save_database(database, message):
     with open(database_file, "w") as file:
         json.dump(database, file)
 
-    old_database_file = database_dir + "\old_database.json"
+    #old_database_file = database_dir + "old_database.json"
+    old_database_file = "old_database.json"
     with open(old_database_file, "w") as file:
         json.dump(old_database, file)
 
