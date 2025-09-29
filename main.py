@@ -4,6 +4,9 @@ import json
 
 from datetime import datetime, timedelta
 
+from config import Config, load_config
+
+
 import asyncio
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import Command, CommandStart
@@ -14,7 +17,8 @@ from keyboards import *
 import functions
 
 # Токен Бота
-BOT_TOKEN = '8350350899:AAFSG_rc0vuEYis37oUTNr5mQOuW3GZo4ls'
+config: Config = load_config()
+BOT_TOKEN: str = config.tg_bot.token
 CHANNEL_USERNAME = "@a2b_agency"  # Юзернейм канала (с @)
 CHANNEL_ID = -1002497549820
 
